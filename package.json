@@ -1,0 +1,26 @@
+{
+  "name": "expo-live-activity",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "typecheck": "tsc -p server && tsc -p module && tsc -p tests",
+    "typecheck:example": "pnpm --filter example typecheck",
+    "test": "vitest run",
+    "push": "tsx server/cli.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "expo": "~54.0.34",
+    "tsx": "^4.19.0",
+    "typescript": "~5.9.3",
+    "vitest": "^4.1.9",
+    "xcode": "^3.0.1"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": []
+  }
+}

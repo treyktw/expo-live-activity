@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "Trip Activity Example",
+    "slug": "trip-activity-example",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "bundleIdentifier": "com.example.tripactivity",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.example.tripactivity",
+      "permissions": ["android.permission.POST_NOTIFICATIONS"]
+    },
+    "plugins": ["expo-live-activity-plugin"]
+  }
+}

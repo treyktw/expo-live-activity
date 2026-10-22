@@ -1,0 +1,12 @@
+{
+  "name": "expo-live-activity-plugin",
+  "version": "0.1.0",
+  "description": "Expo config plugin that generates a WidgetKit / ActivityKit extension target for a trip Live Activity during prebuild.",
+  "license": "MIT",
+  "main": "withTripLiveActivity.js",
+  "types": "index.d.ts",
+  "private": true,
+  "peerDependencies": {
+    "expo": ">=52"
+  }
+}

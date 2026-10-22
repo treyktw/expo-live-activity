@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Typecheck server, module, tests
+        run: pnpm typecheck
+      - name: Typecheck example app
+        run: pnpm typecheck:example
+      - name: Plugin + APNs tests
+        run: pnpm test
+      - name: Real expo prebuild (iOS project generation, no CocoaPods)
+        working-directory: example
+        run: |
+          npx expo prebuild --platform ios --no-install --clean
+          test -f ios/TripLiveActivity/TripLiveActivityWidget.swift
+          grep -q "com.example.tripactivity.TripLiveActivity" ios/*.xcodeproj/project.pbxproj
+          grep -q "NSSupportsLiveActivities" ios/*/Info.plist
+      - name: APNs CLI dry run
+        run: pnpm push
